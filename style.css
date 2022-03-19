@@ -29,7 +29,10 @@ button {
   width: auto;
 }
 
-button:focus:hover {
+button:focus {
+  background: #bcbcbc;
+}
+button:hover {
   background: #bcbcbc;
 }
 
@@ -65,16 +68,16 @@ main {
 }
 
 .correct_answer {
-  background-color: #28a745;
+  background-color: #28a745 !important;
 }
 
 .incorrect_answer {
-  background-color: #dc3545;
+  background-color: #dc3545 !important;
 }
 
 .dialog_container {
   position: absolute;
-  width: 60vw;
+  width: 100vw;
   height: 60vh;
   background-color: #212529b4;
   display: flex;
@@ -108,7 +111,6 @@ footer p a {
 
 @media only screen and (max-width: 600px) {
   .dialog_container {
-    width: 100vw;
     height: 80vh;
   }
 }
