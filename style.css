@@ -1,0 +1,114 @@
+body {
+  background-color: #212529;
+  /* height: 95vh; */
+  /* display: flex;
+  flex-direction: column;
+  justify-content: space-between; */
+}
+
+h1,
+h2,
+h3,
+p,
+li {
+  color: #e9ecef;
+}
+
+button {
+  background: #7c7c7c;
+  border-bottom: 4px inset rgba(0, 0, 0, 0.5);
+  border-left: 4px inset rgba(0, 0, 0, 0.5);
+  border-right: 4px inset rgba(255, 255, 255, 0.5);
+  border-top: 4px inset rgba(255, 255, 255, 0.5);
+  box-sizing: border-box;
+  color: white;
+  cursor: pointer;
+  display: inline-block;
+  padding: 0.3rem;
+  text-transform: uppercase;
+  width: auto;
+}
+
+button:focus:hover {
+  background: #bcbcbc;
+}
+
+header {
+  display: flex;
+  justify-content: space-around;
+  box-shadow: 0px 2px 2px #2d3136;
+  margin-bottom: 1rem;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.section_categorias {
+  background-color: #2b2f33;
+  padding: 1rem;
+  border-radius: 0.5rem;
+}
+
+.answers_container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.answers_container button {
+  margin: 0.2rem 0;
+  width: 100%;
+}
+
+.correct_answer {
+  background-color: #28a745;
+}
+
+.incorrect_answer {
+  background-color: #dc3545;
+}
+
+.dialog_container {
+  position: absolute;
+  width: 60vw;
+  height: 60vh;
+  background-color: #212529b4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.dialog_container section {
+  background-color: #3a3e42;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  width: 15rem;
+  height: 10rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.dialog_container p {
+  text-align: center;
+}
+
+footer p {
+  text-align: center;
+}
+
+footer p a {
+  color: #e9ecef;
+}
+
+@media only screen and (max-width: 600px) {
+  .dialog_container {
+    width: 100vw;
+    height: 80vh;
+  }
+}
