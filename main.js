@@ -83,12 +83,14 @@ function dialog(is_correct, answer, correct_answer) {
         <h3>${is_correct ? "Correct! ✅😎" : "Incorrect.. ❌👎🏻"}</h3>
         <p>Your answer: ${answer}</p>
         <p>${is_correct ? "" : `The correct answer: ${correct_answer}`}</p>
+
+        <button class='btn_continue' style='margin-bottom: 1.5rem;'>Continue</button>
       </section>
     </span>
   `);
 
-  setTimeout(() => {
+  $(".btn_continue").click(() => {
     $(".dialog_container").remove();
     next();
-  }, 3000);
+  });
 }
