@@ -11,7 +11,7 @@
   <body>
     <header>
       <h1>trivia game</h1>
-      <h2>Points: <span class="points_container">0</span></h2>
+      <h2>Score: <span class="score_container">0</span></h2>
     </header>
     <main>
       <section class="main_section">
@@ -32,6 +32,21 @@
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="./node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+    <script>
+      const firebaseConfig = {
+        apiKey: "AIzaSyDCQlirVR0S1_7odhidxvGoMF0iVAENSOU",
+        authDomain: "trivia-game-246ae.firebaseapp.com",
+        databaseURL: "https://trivia-game-246ae-default-rtdb.firebaseio.com",
+        projectId: "trivia-game-246ae",
+        storageBucket: "trivia-game-246ae.appspot.com",
+        messagingSenderId: "372224296681",
+        appId: "1:372224296681:web:6008b3aad79ff5e4e61278",
+      };
+
+      firebase.initializeApp(firebaseConfig);
+    </script>
     <script src="./main.js"></script>
   </body>
 </html>

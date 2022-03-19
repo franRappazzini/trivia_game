@@ -2,8 +2,8 @@ $(get_data);
 
 const URL = "https://opentdb.com/api.php?amount=10&type=multiple";
 const results = [];
-let points = 0;
-let initialNumber = 0;
+let score = 0;
+let initialNumber = 10;
 
 function get_data() {
   fetch(URL)
@@ -48,11 +48,20 @@ function render() {
   } else {
     $(".main_section").empty().append(`
       <h2 style="text-align: center;">Congratulations! 🎉</h2>
-      <p style="text-align: center;">Your score was ${points} points</p>
+      <p style="text-align: center;">Your score was ${score}</p>
       <div style='display: flex; justify-content: center; margin: 1rem 0;'>
         <button onclick='location.reload()'>Retry</button>
       </div>
+
+      <form class='form' onsubmit='send_score($(".input_name").val(), score)'>
+        <input class='input_name' placeholder='name' maxlength='10' required />
+        <input type='submit' value='send' />
+      </form>
     `);
+
+    $(".form").submit((e) => {
+      e.preventDefault();
+    });
   }
 }
 
@@ -69,7 +78,7 @@ function correct_or_incorrect(index) {
   btn_answer.click(() => {
     if (btn_answer.val() == results[initialNumber].correct_answer) {
       btn_answer.addClass("correct_answer");
-      add_points();
+      add_score();
       dialog(true, btn_answer.val(), results[initialNumber].correct_answer);
     } else {
       btn_answer.addClass("incorrect_answer");
@@ -79,9 +88,9 @@ function correct_or_incorrect(index) {
 }
 
 // suma puntos
-function add_points() {
-  points += 1;
-  $(".points_container").empty().append(points);
+function add_score() {
+  score += 1;
+  $(".score_container").empty().append(score);
 }
 
 // dialog de respuesta correcta o incorrecta
@@ -102,4 +111,10 @@ function dialog(is_correct, answer, correct_answer) {
     $(".dialog_container").remove();
     next_question();
   });
+}
+
+function send_score(name, score) {
+  const db = firebase.database();
+
+  db.ref("scores").push({ name: name, score: score });
 }

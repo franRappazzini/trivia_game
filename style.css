@@ -54,6 +54,7 @@ button:hover {
 header {
   display: flex;
   justify-content: space-around;
+  align-items: center;
   box-shadow: 0px 2px 2px #2d3136;
   margin-bottom: 1rem;
 }
