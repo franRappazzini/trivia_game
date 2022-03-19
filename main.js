@@ -1,16 +1,20 @@
+$(get_data);
+
 const URL = "https://opentdb.com/api.php?amount=10&type=multiple";
 const results = [];
 let points = 0;
 let initialNumber = 0;
 
-fetch(URL)
-  .then((res) => res.json())
-  .then((data) => {
-    results.push(...data.results);
-    console.log(results);
-    render();
-  })
-  .catch((err) => console.log("ERROR: ", err));
+function get_data() {
+  fetch(URL)
+    .then((res) => res.json())
+    .then((data) => {
+      results.push(...data.results);
+      console.log(results);
+      render();
+    })
+    .catch((err) => console.log("ERROR: ", err));
+}
 
 // renderiza las preguntas y respuestas
 function render() {
@@ -24,6 +28,7 @@ function render() {
     answers.push(results[initialNumber].correct_answer);
 
     $(".section_categorias").empty().append(`
+      <p>${initialNumber + 1}/10</p>
       <p>Category: ${results[initialNumber].category}</p>
       <p>Difficulty: ${results[initialNumber].difficulty}</p>
       <p>${results[initialNumber].question}</p>
@@ -42,8 +47,13 @@ function render() {
       correct_or_incorrect(index, correct_answer);
     });
   } else {
-    $(".section_categorias").empty();
-    console.log("no mas");
+    $(".section_categorias").empty().append(`
+      <h2 style="text-align: center;">Congratulations! 🎉</h2>
+      <p style="text-align: center;">Your score was ${points} points</p>
+      <div style='display: flex; justify-content: center; margin: 1rem 0;'>
+        <button onclick='location.reload()'>Retry</button>
+      </div>
+    `);
   }
 }
 
