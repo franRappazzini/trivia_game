@@ -11,7 +11,6 @@ function get_data() {
     .then((data) => {
       results.push(...data.results);
       console.log(results);
-      render();
     })
     .catch((err) => console.log("ERROR: ", err));
 }
@@ -27,7 +26,7 @@ function render() {
     );
     answers.push(results[initialNumber].correct_answer);
 
-    $(".section_categorias").empty().append(`
+    $(".main_section").empty().append(`
       <p>${initialNumber + 1}/10</p>
       <p>Category: ${results[initialNumber].category}</p>
       <p>Difficulty: ${results[initialNumber].difficulty}</p>
@@ -38,7 +37,7 @@ function render() {
     `);
 
     answers.sort().forEach((answer, index) => {
-      $(".section_categorias div").append(`
+      $(".main_section div").append(`
         <button class='btn_answer-${index}' value='${answer}'>
             ${answer}
         </button>
@@ -47,7 +46,7 @@ function render() {
       correct_or_incorrect(index, correct_answer);
     });
   } else {
-    $(".section_categorias").empty().append(`
+    $(".main_section").empty().append(`
       <h2 style="text-align: center;">Congratulations! 🎉</h2>
       <p style="text-align: center;">Your score was ${points} points</p>
       <div style='display: flex; justify-content: center; margin: 1rem 0;'>
@@ -58,7 +57,7 @@ function render() {
 }
 
 // pasa a la siguiente pregunta
-function next() {
+function next_question() {
   initialNumber += 1;
   render();
 }
@@ -101,6 +100,6 @@ function dialog(is_correct, answer, correct_answer) {
 
   $(".btn_continue").click(() => {
     $(".dialog_container").remove();
-    next();
+    next_question();
   });
 }

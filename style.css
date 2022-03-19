@@ -29,11 +29,30 @@ button {
   width: auto;
 }
 
+.btn_start_game,
 button:focus {
   background: #bcbcbc;
 }
+.btn_start_game,
 button:hover {
   background: #bcbcbc;
+}
+
+.btn_start_game {
+  background: #7c7c7c;
+  border-bottom: 10px inset rgba(0, 0, 0, 0.5);
+  border-left: 10px inset rgba(0, 0, 0, 0.5);
+  border-right: 10px inset rgba(255, 255, 255, 0.5);
+  border-top: 10px inset rgba(255, 255, 255, 0.5);
+  box-sizing: border-box;
+  color: white;
+  font-size: 1.2rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-block;
+  padding: 1rem;
+  text-transform: uppercase;
+  width: auto;
 }
 
 header {
@@ -49,7 +68,7 @@ main {
   align-items: center;
 }
 
-.section_categorias {
+.main_section {
   background-color: #2b2f33;
   padding: 1rem;
   border-radius: 0.5rem;
