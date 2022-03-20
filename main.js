@@ -1,9 +1,14 @@
-$(get_data);
+$(() => {
+  get_data();
+  get_high_scores();
+});
 
 const URL = "https://opentdb.com/api.php?amount=10&type=multiple";
+const db = firebase.database();
 const results = [];
+const high_scores = [];
 let score = 0;
-let initialNumber = 10;
+let initialNumber = 9;
 
 function get_data() {
   fetch(URL)
@@ -113,8 +118,45 @@ function dialog(is_correct, answer, correct_answer) {
   });
 }
 
-function send_score(name, score) {
-  const db = firebase.database();
+// envia el score a la db
+async function send_score(name, score) {
+  $(".input_name").val("");
+  await db.ref("scores").push({ name: name, score: score });
+  location.reload();
+}
 
-  db.ref("scores").push({ name: name, score: score });
+// obtiene los scores de la db
+function get_high_scores() {
+  db.ref("scores").on("value", (snap) => {
+    if (snap.exists()) {
+      Object.values(snap.val()).map((data) => high_scores.push({ ...data }));
+    }
+  });
+}
+
+// renderiza la tabla de puntuacion
+function show_high_scores() {
+  $(".main_section").empty().append(`
+    <button onclick='location.reload()'>Go back</button>
+    <table border='1' class='score_table'>
+      <tr>
+        <td style='width: 1.5rem;'></td>
+        <td style='width: 7rem'>Name</td>
+        <td style='width: 3rem;' align='center'>Score</td>
+      </tr>
+    </table>
+  `);
+
+  high_scores
+    .sort((a, b) => b.score - a.score)
+    .forEach((score, index) => {
+      $(".main_section table").append(`
+      <tr>
+        <td style='width: 1.5rem;'>${index + 1}</td>
+        <td style='width: 7rem'>${score.name}</td>
+        <td style='width: 3rem;' align='center'>${score.score}</td>
+      </tr>
+      <p>${index + 1} ${score.name}: ${score.score} points</p>
+    `);
+    });
 }

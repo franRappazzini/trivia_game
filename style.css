@@ -71,6 +71,14 @@ main {
   border-radius: 0.5rem;
 }
 
+.show_scores {
+  text-align: center;
+}
+.show_scores:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
 .answers_container {
   display: flex;
   flex-direction: column;
@@ -123,6 +131,13 @@ footer p {
 
 footer p a {
   color: #e9ecef;
+}
+.score_table {
+  margin-top: 1rem;
+}
+.score_table td {
+  color: #e9ecef;
+  padding: 0 0.2rem;
 }
 
 @media only screen and (max-width: 600px) {
