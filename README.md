@@ -1,3 +1,14 @@
-# trivia_game (en desarrollo)
+# Trivia Game Retro
 
-Creado con JavaScript, HTML, CSS y jQuery
+Juego de preguntas varias, con opcion a jugar con respuestas multiple-choice o verdadero/falso
+
+## Construido con: 🛠️
+
+* JavaScript
+* HTML
+* CSS
+* jQuery
+* Firebase (para los scores)
+* [API](https://opentdb.com/api_config.php)
+
+👉🏼[Toque para ver proyecto](https://franrappazzini.github.io/trivia_game/)👈🏼
