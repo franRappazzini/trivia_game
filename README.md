@@ -8,6 +8,7 @@ Juego de preguntas varias, con opcion a jugar con respuestas multiple-choice o v
 * HTML
 * CSS
 * jQuery
+* Firebase (para los scores)
 * [API](https://opentdb.com/api_config.php)
 
 👉🏼[Toque para ver proyecto](https://franrappazzini.github.io/trivia_game/)👈🏼
