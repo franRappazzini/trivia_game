@@ -23,7 +23,7 @@ function get_data() {
       .then((data) => {
         results.splice(0, results.length);
         results.push(...data.results);
-        console.log(results);
+        console.log(results); // lo dejo a modo de easter egg 🤫
         $(".btn_start_game").removeAttr("disabled");
       })
       .catch((err) => console.log("ERROR: ", err));
