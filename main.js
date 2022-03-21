@@ -3,15 +3,33 @@ $(() => {
   get_high_scores();
 });
 
-const URL = "https://opentdb.com/api.php?amount=10&type=multiple";
 const db = firebase.database();
 const results = [];
 const high_scores = [];
 let score = 0;
-let initialNumber = 9;
+let initialNumber = 0;
 
+// obtiene datos de api
 function get_data() {
-  fetch(URL)
+  // escoger tipo de juego
+  $("select[name=select_game]").change(() => {
+    $(".btn_start_game").attr("disabled", true);
+    fetch(
+      `https://opentdb.com/api.php?amount=10&type=${$(
+        "select[name=select_game]"
+      ).val()}`
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        results.splice(0, results.length);
+        results.push(...data.results);
+        console.log(results);
+        $(".btn_start_game").removeAttr("disabled");
+      })
+      .catch((err) => console.log("ERROR: ", err));
+  });
+
+  fetch("https://opentdb.com/api.php?amount=10&type=multiple")
     .then((res) => res.json())
     .then((data) => {
       results.push(...data.results);

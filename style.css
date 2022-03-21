@@ -65,18 +65,23 @@ main {
   align-items: center;
 }
 
-.main_section {
-  background-color: #2b2f33;
-  padding: 1rem;
-  border-radius: 0.5rem;
-}
-
 .show_scores {
   text-align: center;
 }
 .show_scores:hover {
   text-decoration: underline;
   cursor: pointer;
+}
+
+.main_section {
+  background-color: #2b2f33;
+  padding: 1rem;
+  border-radius: 0.5rem;
+}
+
+.select_game {
+  display: block;
+  margin-bottom: 1rem;
 }
 
 .answers_container {
